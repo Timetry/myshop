@@ -28,26 +28,30 @@
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
 
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+<!--Spring配置文件和监听-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:applicationContext.xml
+            classpath:applicationContext*.xml
         </param-value>
     </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
+<!--springMVC的核心过滤器-->
     <servlet>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>springDispatcherSerclet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:dispatcher-servlet.xml</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
-
-
+<!--拦截资源-->
     <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>springDispatcherSerclet</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
