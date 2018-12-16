@@ -79,7 +79,7 @@
     <!--5.给mapper创建代理-->
     <bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--指定接口的路径-->
-        <property name="basePackage" value="com.mmall.dao"/>
+        <property name="basePackage" value="com.myshop.dao"/>
     </bean>
 
     <!--6.配置事务-->
