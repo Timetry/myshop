@@ -349,8 +349,6 @@
             </plugin>
         </plugins>
 
-        <!--swagger-->
-        <finalName>swagger-spring</finalName>
 
     </build>
 </project>

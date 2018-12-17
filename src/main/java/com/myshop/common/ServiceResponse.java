@@ -1,5 +1,6 @@
 package com.myshop.common;
 
+import com.myshop.pojo.User;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -89,4 +90,5 @@ public class ServiceResponse<T> implements Serializable {
     public static <T> ServiceResponse<T> createByErrorCodeMessage(int errorCode, String errorMessage) {
         return new ServiceResponse<T>(errorCode, errorMessage);
     }
+
 }

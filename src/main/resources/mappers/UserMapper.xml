@@ -156,4 +156,12 @@
     <select id="checkUserName" resultType="int" parameterType="String">
     selete COUNT (1) FROM mmall_user WHERE username=#{username}
   </select>
+
+    <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from mmall_user
+        where username = #{username}
+        and password=#{password}
+    </select>
 </mapper>

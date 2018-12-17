@@ -17,4 +17,6 @@ public interface UserMapper {
 
     //检查用户名是否存在
     int checkUserName(String username);
+
+    User selectLogin (String usname,String password);
 }

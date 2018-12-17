@@ -41,7 +41,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
         return new ApiInfo(
                 "Shop前台API接口",//大标题 title
                 "Swagger",//小标题
-                "0.0.1",//版本
+                "v3.20.3",//版本
                 "www.baidu.com",//termsOfServiceUrl
                  contact,//作者
                 "Blog",//链接显示文字

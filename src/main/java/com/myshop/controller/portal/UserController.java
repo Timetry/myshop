@@ -1,12 +1,10 @@
 package com.myshop.controller.portal;
-import io.swagger.annotations.Api;
+
+import io.swagger.annotations.*;
 import com.myshop.common.Const;
 import com.myshop.common.ServiceResponse;
 import com.myshop.pojo.User;
 import com.myshop.service.IUserService;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
-@Api(tags="用户信息")
+@Api(tags = "用户模块接口")
 @Controller
 @RequestMapping("/user/")
 public class UserController {
@@ -25,11 +23,10 @@ public class UserController {
     //用户登录
     @RequestMapping(value = "login.do", method = RequestMethod.POST)
     @ResponseBody
-    @ApiResponses(value = {
-            @ApiResponse(code = 500, message = "系统错误"),
-            @ApiResponse(code = 200, message = "0 成功,其它为错误,返回格式：{code:0,data[{}]},data中的属性参照下方Model") })
-    @ApiOperation(httpMethod = "POST", value = "个人信息")
-    public ServiceResponse<User> login(String username, String password, HttpSession session) {
+    @ApiOperation(value = "用户登录", httpMethod = "POST")
+    public ServiceResponse<User> login(@ApiParam(name = "username", value = "用户名") String username,
+                                       @ApiParam(name = "password", value = "用户密码") String password,
+                                       @ApiParam(name = "session", value = "session请求") HttpSession session) {
         ServiceResponse<User> response = iUserService.login(username, password);
         if (response.isSuccess()) {
             session.setAttribute(Const.CURRENT_USER, response.getDate());
