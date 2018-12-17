@@ -33,4 +33,17 @@ public class UserController {
         }
         return response;
     }
+
+    //用户退出
+    @RequestMapping(value = "logout.do",method = RequestMethod.POST)
+    @ResponseBody
+    public ServiceResponse<String> logout(HttpSession session){
+        //移除session
+        session.removeAttribute(Const.CURRENT_USER);
+        return ServiceResponse.createBySuccess();
+    }
+
+    //用户注册
+    
+
 }
