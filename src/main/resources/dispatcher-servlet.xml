@@ -44,7 +44,7 @@
         </property>
     </bean>
 
-    <mvc:resources mapping="/swagger/**" location="/WEB-INF/swagger/" cache-period="31556926"/>
+    <mvc:resources mapping="/swagger/**" location="/swagger/" cache-period="31556926"/>
     <mvc:default-servlet-handler/>
     <bean class="com.myshop.common.SwaggerConfig"/>
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpSession;
 
@@ -24,9 +25,9 @@ public class UserController {
     @RequestMapping(value = "login.do", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "用户登录", httpMethod = "POST")
-    public ServiceResponse<User> login(@ApiParam(name = "username", value = "用户名") String username,
-                                       @ApiParam(name = "password", value = "用户密码") String password,
-                                       @ApiParam(name = "session", value = "session请求") HttpSession session) {
+    public ServiceResponse<User> login(@ApiParam(name = "用户name", value = "用户名") String username,
+                                       @ApiParam(name = "用户password", value = "用户密码") String password,
+                                       @ApiIgnore HttpSession session) {
         ServiceResponse<User> response = iUserService.login(username, password);
         if (response.isSuccess()) {
             session.setAttribute(Const.CURRENT_USER, response.getDate());
@@ -44,6 +45,11 @@ public class UserController {
     }
 
     //用户注册
-    
+    public ServiceResponse<String> register(User user){
+
+        return null;
+    }
+
+
 
 }

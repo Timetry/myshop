@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.nio.cs.US_ASCII;
 
 @Service("iUserService")
 public class UserServiceImpl implements IUserService {
@@ -30,4 +31,21 @@ public class UserServiceImpl implements IUserService {
         }
         return ServiceResponse.createBySuccess("登录成功", user);
     }
+
+    @Override
+    public ServiceResponse<String> register(User user) {
+
+        //效验（用户名及email）
+        //数据库中的密码是MD5加密之后的
+        user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
+        int regisUser = userMapper.insert(user);
+        if (regisUser == 0) {
+            return ServiceResponse.createByErrorMessage("注册失败");
+        }
+        return ServiceResponse.createBySuccessMessage("注册成功");
+
+    }
+
+    //效验用户名用户类型，email是否存在
+    
 }
